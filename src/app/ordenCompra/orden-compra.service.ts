@@ -30,16 +30,24 @@ export class OrdenCompraService {
   }
 
   public filtrarOrdenes( valores: any): Observable<any>{
-
-    console.log(valores)
-
     const params = new HttpParams({
       fromObject: valores
     })
-
-    console.log(params)
-
     return this.http.get<Orden[]>(`${this.apiUrlFiltro}` , { params: params , observe: 'response' });
   }
+
+  public editarOrden( id: number , orden: Orden ): Observable<any>{
+
+    // var form = new FormData();
+
+    // form.append('Id', orden.id);
+    // form.append('FechaHora', orden.fechaHora);
+    // form.append('Estacion', orden.estacion);
+    // form.append('Usuario', orden.usuario);
+
+    // console.log(JSON.stringify(orden));
+    return this.http.put(`${this.apiUrl}/${id}` , orden );
+  }
+
 
 }

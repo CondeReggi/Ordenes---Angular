@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ListadoGenericoComponent } from './utilidades/listado-generico/listado-generico/listado-generico.component';
 import { FormularioBusquedaComponent } from './ordenCompra/formulario-busqueda/formulario-busqueda.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ConfirmDialogComponent } from './dialog/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MenuComponent,
     TablaComprasComponent,
     ListadoGenericoComponent,
-    FormularioBusquedaComponent
+    FormularioBusquedaComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,

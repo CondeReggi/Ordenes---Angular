@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { OrdenCompraService } from '../orden-compra.service';
@@ -11,9 +11,15 @@ import { Orden } from '../orden-compra';
 })
 export class FormularioBusquedaComponent implements OnInit {
 
-  paginaActual = 1;
-  cantidadElementosAMostrar = 10;
+  // paginaActual = 1;
+  // cantidadElementosAMostrar = 5;
   // cantidadElementos;
+
+  @Input()
+  paginaActual: number = 1;
+
+  @Input()
+  cantidadElementosAMostrar: number = 5;
 
   @Output()
   Data: EventEmitter<Orden[]> = new EventEmitter<Orden[]>();
@@ -38,6 +44,10 @@ export class FormularioBusquedaComponent implements OnInit {
     metodo: '',
     importeTotal: '',
     estado: ''
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.buscarPeliculas({});
   }
 
   ngOnInit(): void {
@@ -76,12 +86,8 @@ export class FormularioBusquedaComponent implements OnInit {
     }
 
     if (valoresFormulario.fechaHora){
-
       const date = new Date(valoresFormulario.fechaHora).toLocaleString()
       const format = date.split(" ");
-
-      // console.log(format)
-
       queryStrings.push(`FechaHora=${format[0]}`)
     }
 
@@ -108,15 +114,9 @@ export class FormularioBusquedaComponent implements OnInit {
     valores.pagina = this.paginaActual;
     valores.RecordsPorPagina = this.cantidadElementosAMostrar;
 
-    // console.log(valores)
-
     this.ordenesServices.filtrarOrdenes(valores).subscribe(ordenes => {
-
-      // this.peliculas = peliculas.body;
       this.escribirParametrosBusqueda();
       this.Data.emit( ordenes.body );
-
-      // console.log("Emitiendo" , ordenes.body)
 
     }, err => console.log(err))
   }
