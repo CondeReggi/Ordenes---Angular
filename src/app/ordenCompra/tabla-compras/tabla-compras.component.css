@@ -1,0 +1,70 @@
+.contenedorFiltro{
+  width: 100%;
+  height: calc(100vh - 70px);
+  grid-column: 2/3;
+  overflow-x: scroll;
+}
+
+.navegacionLateral{
+  grid-column: 1/2;
+  width: 100%;
+  height: calc(100vh - 70px);
+  background-color: rgb(21, 21, 158);
+  padding: 15px;
+  /* gap: 2px; */
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  overflow-y: scroll;
+}
+
+table{
+  width: 100%;
+}
+
+.containerTable{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+}
+
+.mat-row:nth-child(odd){
+  background-color: rgba(66, 58, 58, 0.24);
+}
+
+.mat-row {
+  width: 100%;
+  overflow-x: scroll;
+}
+
+.box-label{
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-weight: bold;
+  height: 60px;
+  font-size: 1rem;
+  background-color: rgb(103, 32, 170);
+  border-radius: 5px;
+  box-shadow: -2px 4px 10px 0px rgba(0, 0, 0, 0.466);
+  justify-content: flex-start;
+  cursor: pointer;
+  gap: 10px;
+  padding-left: 15px;
+}
+
+h4{
+  margin: 0;
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 1141px) {
+  .navegacionLateral{
+    display: none;
+  }
+  .contenedorFiltro{
+    grid-column: 1/3;
+  }
+}

@@ -1,0 +1,49 @@
+<form class="formulario" [formGroup]="form" (submit)="guardarCambios()">
+
+  <!-- id: '',
+  fechaHora: '',
+  estacion: '',
+  usuario: '',
+  email: '',
+  importeTotal: '',
+  estado: '' -->
+
+  <div class="filtrado">
+    <mat-form-field appearance="outline">
+      <mat-label>Id</mat-label>
+      <input formControlName="id" matInput />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Estación</mat-label>
+      <input formControlName="estacion" matInput />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Usuario</mat-label>
+      <input formControlName="usuario" matInput />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Importe Total</mat-label>
+      <input formControlName="importeTotal" matInput />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Fecha Hora</mat-label>
+      <input formControlName="fechaHora" matInput [matDatepicker]="picker" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="estado">
+      Estado
+    </mat-checkbox>
+  </div>
+
+  <div class="botones">
+    <button mat-flat-button color="warn" (click)="LimpiarForm()" >Limpiar</button>
+    <a mat-stroked-button routerLink="/">Cancelar</a>
+  </div>
+
+</form>

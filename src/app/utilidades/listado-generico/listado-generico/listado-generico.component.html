@@ -1,0 +1,16 @@
+<div *ngIf="!Listado" >
+  <img src="https://c.tenor.com/tEBoZu1ISJ8AAAAC/spinning-loading.gif" alt="">
+</div>
+
+<div *ngIf="Listado?.length === 0 && Listado" >
+  <span #vacio><ng-content select="[vacio]"></ng-content></span>
+  <span *ngIf="!vacio.innerHTML.trim()">
+    <p>No hay contenido para mostrar</p>
+  </span>
+</div>
+
+<ng-container *ngIf="Listado && Listado.length > 0">
+  <div class="funciones">
+    <ng-content select="[contenido]"></ng-content>
+  </div>
+</ng-container>

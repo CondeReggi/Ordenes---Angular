@@ -1,0 +1,15 @@
+.filtrado{
+  height: calc(auto + 80px);
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.botones{
+  padding: 20px;
+}
+
+input, .mat-label{
+  cursor: pointer;
+}
