@@ -38,7 +38,7 @@ export class TablaComprasComponent implements OnInit {
 
   paginaActual = 1;
   cantidadRegistrosAMostrar = 5;
-  cantidadTotalRegistros: any;
+  cantidadTotalRegistros: number = 10;
 
   constructor(private ordenesServices: OrdenCompraService, public dialog: MatDialog) { }
 
@@ -47,7 +47,12 @@ export class TablaComprasComponent implements OnInit {
 
   setearData(Data: Orden[]){
     this.ordenes = Data || [];
-    this.cantidadTotalRegistros = 50;
+  }
+
+  setearcantidadTotalRegistros(Data: number){
+    // console.log("hola")
+    this.cantidadTotalRegistros = Data || 10;
+    // console.log(this.cantidadTotalRegistros)
   }
 
   actualizarPaginacion(datos: PageEvent){
@@ -83,6 +88,11 @@ export class TablaComprasComponent implements OnInit {
     });
   }
 
+  clickeable2(contact: Orden){
+    alert("hola")
+  }
+
+
   agregar(orden: Orden) {
     //aca llega los datos cambiados
     console.log(orden);
@@ -91,4 +101,5 @@ export class TablaComprasComponent implements OnInit {
       console.log("Salio eselente")
     }, err => console.log(err) )
   }
+
 }

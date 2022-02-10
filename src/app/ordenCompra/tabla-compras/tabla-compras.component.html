@@ -9,7 +9,7 @@
   </div>
   <div class="contenedorFiltro">
     <div class="filtrados">
-      <app-formulario-busqueda [paginaActual]="paginaActual" [cantidadElementosAMostrar]="cantidadRegistrosAMostrar" (Data)="setearData($event)" ></app-formulario-busqueda>
+      <app-formulario-busqueda (CantidadDeRegistros)="setearcantidadTotalRegistros($event)" [paginaActual]="paginaActual" [cantidadElementosAMostrar]="cantidadRegistrosAMostrar" (Data)="setearData($event)" ></app-formulario-busqueda>
     </div>
     <table style="overflow: scroll;" #table mat-table [dataSource]="ordenes" class="mat-elevation-z2 tabla_indice">
       <ng-container matColumnDef="Id">
@@ -100,7 +100,7 @@
       </ng-container>
 
       <!-- <mat-icon>swap_vert</mat-icon> -->
-
+      <!-- <td (click)="clickeable2(cell)" mat-cell *matCellDef="let cell"></td> -->
       <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
       <tr mat-row style="cursor: pointer;" (click)="clickeable(row)" *matRowDef="let row; columns: columnsToDisplay"></tr>
     </table>

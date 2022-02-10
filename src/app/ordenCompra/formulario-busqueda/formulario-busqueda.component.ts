@@ -23,6 +23,8 @@ export class FormularioBusquedaComponent implements OnInit {
 
   @Output()
   Data: EventEmitter<Orden[]> = new EventEmitter<Orden[]>();
+  @Output()
+  CantidadDeRegistros: EventEmitter<number> = new EventEmitter<number>();;
 
   constructor(private formBuilder: FormBuilder, private location: Location, private ordenesServices: OrdenCompraService) { }
 
@@ -47,13 +49,13 @@ export class FormularioBusquedaComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.buscarPeliculas({});
+    this.buscarOrdenes({});
   }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group(this.formOriginal)
 
-    this.buscarPeliculas({});
+    this.buscarOrdenes({});
 
     this.form.valueChanges.subscribe( valores => {
       this.escribirParametrosBusqueda();
@@ -67,14 +69,8 @@ export class FormularioBusquedaComponent implements OnInit {
         FechaHora: valores.fechaHora ? new Date(valores.fechaHora).toDateString() : ''
       }
 
-      this.buscarPeliculas(valoresObj);
+      this.buscarOrdenes(valoresObj);
     })
-  }
-
-  guardarCambios(){
-    // console.log(this.form.value);
-    this.escribirParametrosBusqueda();
-    this.buscarPeliculas({});
   }
 
   private escribirParametrosBusqueda(){
@@ -110,13 +106,20 @@ export class FormularioBusquedaComponent implements OnInit {
     this.location.replaceState('ordenes' , queryStrings.join("&"));
   }
 
-  buscarPeliculas(valores: any){
+  buscarOrdenes(valores: any){
     valores.pagina = this.paginaActual;
     valores.RecordsPorPagina = this.cantidadElementosAMostrar;
 
     this.ordenesServices.filtrarOrdenes(valores).subscribe(ordenes => {
       this.escribirParametrosBusqueda();
       this.Data.emit( ordenes.body );
+
+      this.CantidadDeRegistros.emit( ordenes.headers.get("cantidadTotalRegistros") );
+
+      // console.log( ordenes.headers.get("cantidadTotalRegistros") );
+      // console.log(  )
+      // this.cantidadDeRegistros = ordenes.headers.append("cantidadTotalRegistros");
+      // this.CantidadDeRegistros.emit( 10 );
 
     }, err => console.log(err))
   }

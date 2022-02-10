@@ -46,7 +46,7 @@ export class OrdenCompraService {
     // form.append('Usuario', orden.usuario);
 
     // console.log(JSON.stringify(orden));
-    return this.http.put(`${this.apiUrl}/${id}` , orden );
+    return this.http.put(`${this.apiUrl}/${id}` , { orden , observe: 'response' } );
   }
 
 
