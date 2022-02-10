@@ -9,7 +9,7 @@
   </div>
   <div class="contenedorFiltro">
     <div class="creacion">
-      <app-crear-orden (Data)="actualizarData($event)" ></app-crear-orden>
+      <app-crear-orden (Data)="paginaActual = 1" ></app-crear-orden>
     </div>
     <div class="filtrados">
       <app-formulario-busqueda (CantidadDeRegistros)="setearcantidadTotalRegistros($event)" [paginaActual]="paginaActual" [cantidadElementosAMostrar]="cantidadRegistrosAMostrar" (Data)="setearData($event)" ></app-formulario-busqueda>

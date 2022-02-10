@@ -49,9 +49,6 @@ export class FormularioBusquedaComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-
-    console.log(changes)
-
     this.buscarOrdenes({});
   }
 
@@ -141,7 +138,6 @@ export class FormularioBusquedaComponent implements OnInit {
 
     }, err => console.log(err))
 
-    console.log(valores)
   }
 
   LimpiarForm(){

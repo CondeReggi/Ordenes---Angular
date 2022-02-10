@@ -69,6 +69,9 @@ export class CrearOrdenComponent implements OnInit {
 
     this.ordenServices.crearOrden( Orden ).subscribe( () => {
       console.log("Se ha creado correctamente")
+
+      // Setear el form que se desfuquee y que tambien queden vacios los campos
+      // this.form.patchValue();
     }, err => console.log(err))
 
     this.Data.emit();

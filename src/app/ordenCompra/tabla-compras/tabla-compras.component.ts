@@ -15,7 +15,7 @@ import { OrdenCompraService } from '../orden-compra.service';
 export class TablaComprasComponent implements OnInit {
   ordenes: Orden[] = [];
   estado: boolean = false;
-
+  datos: Orden[] = [];
   columnsToDisplay = ['Id', 'Fecha Hora', 'Estación' , 'Usuario' , 'Celular', 'Cedula', 'Importe Total', 'Estado', 'Medio de Pago'];
 
   // Sacar de una BD
@@ -76,9 +76,6 @@ export class TablaComprasComponent implements OnInit {
     this.cantidadRegistrosAMostrar = cantidadElementosAMostrar;
   }
 
-
-  datos: Orden[] = [];
-
   clickeable(contact: Orden){
     const dialogo1 = this.dialog.open(ConfirmDialogComponent, {
       data: contact
@@ -90,15 +87,7 @@ export class TablaComprasComponent implements OnInit {
     });
   }
 
-  clickeable2(contact: Orden){
-    alert("hola")
-  }
-
-
   agregar(orden: Orden) {
-    //aca llega los datos cambiados
-    console.log(orden);
-
     this.ordenesServices.editarOrden( orden.id , orden ).subscribe( () => {
       console.log("Salio eselente")
     }, err => console.log(err) )
