@@ -18,6 +18,7 @@ import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatChipsModule } from '@angular/material/chips'
 import { MatDialogModule } from '@angular/material/dialog'
+import {MatListModule} from '@angular/material/list';
 @NgModule({
   declarations: [],
   exports:[
@@ -38,6 +39,7 @@ import { MatDialogModule } from '@angular/material/dialog'
     MatProgressSpinnerModule,
     MatChipsModule,
     MatDialogModule,
+    MatListModule
   ],
   imports: [
     CommonModule

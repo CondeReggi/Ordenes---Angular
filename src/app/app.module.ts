@@ -13,6 +13,7 @@ import { ListadoGenericoComponent } from './utilidades/listado-generico/listado-
 import { FormularioBusquedaComponent } from './ordenCompra/formulario-busqueda/formulario-busqueda.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmDialogComponent } from './dialog/confirm-dialog/confirm-dialog.component';
+import { CrearOrdenComponent } from './ordenCompra/crear-orden/crear-orden.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ConfirmDialogComponent } from './dialog/confirm-dialog/confirm-dialog.c
     TablaComprasComponent,
     ListadoGenericoComponent,
     FormularioBusquedaComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    CrearOrdenComponent
   ],
   imports: [
     BrowserModule,

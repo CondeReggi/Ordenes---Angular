@@ -8,102 +8,107 @@
     </div>
   </div>
   <div class="contenedorFiltro">
+    <div class="creacion">
+      <app-crear-orden (Data)="actualizarData($event)" ></app-crear-orden>
+    </div>
     <div class="filtrados">
       <app-formulario-busqueda (CantidadDeRegistros)="setearcantidadTotalRegistros($event)" [paginaActual]="paginaActual" [cantidadElementosAMostrar]="cantidadRegistrosAMostrar" (Data)="setearData($event)" ></app-formulario-busqueda>
     </div>
-    <table style="overflow: scroll;" #table mat-table [dataSource]="ordenes" class="mat-elevation-z2 tabla_indice">
-      <ng-container matColumnDef="Id">
-        <th mat-header-cell *matHeaderCellDef>
-          <p>Id</p>
-        </th>
-        <td mat-cell *matCellDef="let element">
-          <p>{{ element.id }}</p>
-        </td>
-      </ng-container>
+    <div style="width: 100%; overflow: scroll;">
+      <table style="width: 100%;" #table mat-table [dataSource]="ordenes" class="mat-elevation-z2 tabla_indice">
+        <ng-container matColumnDef="Id">
+          <th mat-header-cell *matHeaderCellDef>
+            <p>Id</p>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <p>{{ element.id }}</p>
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="Fecha Hora">
-        <th mat-header-cell *matHeaderCellDef>
-          <p>Fecha Hora</p>
-        </th>
-        <td mat-cell *matCellDef="let element">
-          <p>{{ element.fechaHora.split("T")[0].replaceAll("-"," / ") }}</p>
-        </td>
-      </ng-container>
+        <ng-container matColumnDef="Fecha Hora">
+          <th mat-header-cell *matHeaderCellDef>
+            <p>Fecha Hora</p>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <p>{{ element.fechaHora.split("T")[0].replaceAll("-"," / ") }}</p>
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="Estación">
-        <th mat-header-cell *matHeaderCellDef>
-          <p>Estación</p>
-        </th>
-        <td mat-cell *matCellDef="let element">
-          <p>{{ element.estacion.nombre }}</p>
-        </td>
-      </ng-container>
+        <ng-container matColumnDef="Estación">
+          <th mat-header-cell *matHeaderCellDef>
+            <p>Estación</p>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <p>{{ element.estacion.nombre }}</p>
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="Usuario">
-        <th mat-header-cell *matHeaderCellDef>
-          <p>Usuario</p>
-        </th>
-        <td mat-cell *matCellDef="let element">
-          <p>{{ element.usuario.id }}</p>
-        </td>
-      </ng-container>
+        <ng-container matColumnDef="Usuario">
+          <th mat-header-cell *matHeaderCellDef>
+            <p>Usuario</p>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <p>{{ element.usuario.id }}</p>
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="Celular">
-        <th mat-header-cell *matHeaderCellDef>
-          <p>Email</p>
-        </th>
-        <td mat-cell *matCellDef="let element">
-          <p>{{ element.usuario.email }}</p>
-        </td>
-      </ng-container>
+        <ng-container matColumnDef="Celular">
+          <th mat-header-cell *matHeaderCellDef>
+            <p>Email</p>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <p>{{ element.usuario.email }}</p>
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="Cedula">
-        <th mat-header-cell *matHeaderCellDef>
-          <p>Cedula</p>
-        </th>
-        <td mat-cell *matCellDef="let element">
-          <p>{{ element.usuario.cedula }}</p>
-        </td>
-      </ng-container>
+        <ng-container matColumnDef="Cedula">
+          <th mat-header-cell *matHeaderCellDef>
+            <p>Cedula</p>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <p>{{ element.usuario.cedula }}</p>
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="Importe Total">
-        <th mat-header-cell *matHeaderCellDef>
-          <p>Importe Total</p>
-        </th>
-        <td mat-cell *matCellDef="let element">
-          <p>$ {{ element.importeTotal }}</p>
-        </td>
-      </ng-container>
+        <ng-container matColumnDef="Importe Total">
+          <th mat-header-cell *matHeaderCellDef>
+            <p>Importe Total</p>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <p>$ {{ element.importeTotal }}</p>
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="Estado">
-        <th mat-header-cell *matHeaderCellDef>
-          <p>Estado</p>
-        </th>
-        <td mat-cell *matCellDef="let element">
-          <p>{{ element.estado ? 1 : 0 }}</p>
-        </td>
-      </ng-container>
+        <ng-container matColumnDef="Estado">
+          <th mat-header-cell *matHeaderCellDef>
+            <p>Estado</p>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <p>{{ element.estado ? 1 : 0 }}</p>
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="Medio de Pago">
-        <th mat-header-cell *matHeaderCellDef>
-          <p>Medio de Pago</p>
-        </th>
-        <td mat-cell *matCellDef="let element">
-          <p>{{ element.usuario.targeta }}</p>
-        </td>
-      </ng-container>
+        <ng-container matColumnDef="Medio de Pago">
+          <th mat-header-cell *matHeaderCellDef>
+            <p>Medio de Pago</p>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <p>{{ element.usuario.targeta }}</p>
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="Acciones">
-        <th mat-header-cell *matHeaderCellDef>
-          <p>Acciones</p>
-        </th>
-      </ng-container>
+        <ng-container matColumnDef="Acciones">
+          <th mat-header-cell *matHeaderCellDef>
+            <p>Acciones</p>
+          </th>
+        </ng-container>
 
-      <!-- <mat-icon>swap_vert</mat-icon> -->
-      <!-- <td (click)="clickeable2(cell)" mat-cell *matCellDef="let cell"></td> -->
-      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-      <tr mat-row style="cursor: pointer;" (click)="clickeable(row)" *matRowDef="let row; columns: columnsToDisplay"></tr>
-    </table>
+        <!-- <mat-icon>swap_vert</mat-icon> -->
+        <!-- <td (click)="clickeable2(cell)" mat-cell *matCellDef="let cell"></td> -->
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row style="cursor: pointer;" (click)="clickeable(row)" *matRowDef="let row; columns: columnsToDisplay"></tr>
+      </table>
+    </div>
 
     <mat-paginator  [pageSizeOptions]="[5, 10, 15]"
                     [length]="cantidadTotalRegistros"

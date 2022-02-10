@@ -3,7 +3,7 @@ import { Injectable, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Estacion, Orden, Usuario } from './orden-compra';
+import { Estacion, Orden, ordenCompraCrear, Usuario } from './orden-compra';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +36,16 @@ export class OrdenCompraService {
     return this.http.get<Orden[]>(`${this.apiUrlFiltro}` , { params: params , observe: 'response' });
   }
 
+  public borrarOrden( id: number ): Observable<any>{
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+
+  public crearOrden( orden: ordenCompraCrear ): Observable<any>{
+    return this.http.post( this.apiUrl , orden );
+  }
+
+
+
   public editarOrden( id: number , orden: Orden ): Observable<any>{
 
     // var form = new FormData();
@@ -46,8 +56,7 @@ export class OrdenCompraService {
     // form.append('Usuario', orden.usuario);
 
     // console.log(JSON.stringify(orden));
-    return this.http.put(`${this.apiUrl}/${id}` , { orden , observe: 'response' } );
+    return this.http.put(`${this.apiUrl}/${id}` , orden );
   }
-
 
 }

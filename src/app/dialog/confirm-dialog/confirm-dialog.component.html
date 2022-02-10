@@ -12,5 +12,6 @@
   <div mat-dialog-actions>
       <button mat-button (click)="cancelar()">Cancelar</button>
       <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Editar</button>
+      <button mat-flat-button color="warn" (click)="borrar(data)">Borrar</button>
   </div>
 </div>

@@ -49,6 +49,9 @@ export class FormularioBusquedaComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
+
+    console.log(changes)
+
     this.buscarOrdenes({});
   }
 
@@ -60,7 +63,7 @@ export class FormularioBusquedaComponent implements OnInit {
     this.form.valueChanges.subscribe( valores => {
       this.escribirParametrosBusqueda();
 
-      var valoresObj = {
+      const valoresObj = {
         Id: valores.id || 0,
         EstacionId: valores.estacion || 0,
         UsuarioId: valores.usuario || 0,
@@ -109,6 +112,21 @@ export class FormularioBusquedaComponent implements OnInit {
   buscarOrdenes(valores: any){
     valores.pagina = this.paginaActual;
     valores.RecordsPorPagina = this.cantidadElementosAMostrar;
+    valores.cantidadTotalRegistros = this.CantidadDeRegistros;
+
+    const valoresObj = {
+      Id: this.form.value.id || 0,
+      EstacionId: this.form.value.estacion || 0,
+      UsuarioId: this.form.value.usuario || 0,
+      ImporteTotal: this.form.value.importeTotal || 0,
+      estado: this.form.value.estado ? true : false,
+      FechaHora: this.form.value.fechaHora ? new Date(valores.fechaHora).toDateString() : ''
+    }
+
+    valores = {
+      ...valores,
+      ...valoresObj
+    }
 
     this.ordenesServices.filtrarOrdenes(valores).subscribe(ordenes => {
       this.escribirParametrosBusqueda();
@@ -122,6 +140,8 @@ export class FormularioBusquedaComponent implements OnInit {
       // this.CantidadDeRegistros.emit( 10 );
 
     }, err => console.log(err))
+
+    console.log(valores)
   }
 
   LimpiarForm(){

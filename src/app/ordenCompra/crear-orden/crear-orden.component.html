@@ -1,30 +1,21 @@
 <div class="titulo">
-  <p>Filtrar Consulta</p>
+  <p>Crear Consulta</p>
 </div>
-<form class="formulario" [formGroup]="form" (submit)="buscarOrdenes({})">
-
-  <!-- id: '',
-  fechaHora: '',
-  estacion: '',
-  usuario: '',
-  email: '',
-  importeTotal: '',
-  estado: '' -->
+<form class="formulario" [formGroup]="form" (submit)="buscarOrdenes()">
 
   <div class="filtrado">
     <mat-form-field appearance="outline">
-      <mat-label>Id</mat-label>
-      <input formControlName="id" matInput />
+      <mat-label>Usuarios</mat-label>
+      <mat-select formControlName="usuarioId">
+        <mat-option *ngFor="let user of listaUsuarios" [value]="(user.id)">{{ user.name }}</mat-option>
+      </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Estación</mat-label>
-      <input formControlName="estacion" matInput />
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Usuario</mat-label>
-      <input formControlName="usuario" matInput />
+      <mat-label>Estaciones</mat-label>
+      <mat-select formControlName="estacionId">
+        <mat-option *ngFor="let estacion of listaEstaciones" [value]="(estacion.id)">{{ estacion.name }}</mat-option>
+      </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -45,7 +36,7 @@
   </div>
 
   <div class="botones">
-    <button mat-flat-button color="warn" (click)="LimpiarForm()" >Limpiar</button>
+    <button mat-flat-button color="primary" [disabled]="form.invalid" (click)="CrearOrden()">Crear</button>
     <a mat-stroked-button routerLink="/">Cancelar</a>
   </div>
 

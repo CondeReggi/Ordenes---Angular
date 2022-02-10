@@ -45,14 +45,16 @@ export class TablaComprasComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  actualizarData(data: number){
+    window.location.reload();
+  }
+
   setearData(Data: Orden[]){
     this.ordenes = Data || [];
   }
 
   setearcantidadTotalRegistros(Data: number){
-    // console.log("hola")
     this.cantidadTotalRegistros = Data || 10;
-    // console.log(this.cantidadTotalRegistros)
   }
 
   actualizarPaginacion(datos: PageEvent){
